@@ -7,9 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {font-family: 'Roboto', sans-serif; margin:0; padding:0; line-height:1.6; background:#f5f5f5;}
-        header {background:#1e1e2f; color:white; padding:20px 0; text-align:center;}
+        header {background:#1e1e2f; color:white; padding:20px 0; text-align:center; position:relative;}
         header h1 {margin:0;}
-        nav {background:#333; display:flex; justify-content:center;}
+        header img {position:absolute; top:10px; left:20px; width:80px; height:auto;}
+        nav {background:#333; display:flex; justify-content:center; flex-wrap: wrap;}
         nav a {color:white; padding:15px 20px; text-decoration:none;}
         nav a:hover {background:#555;}
         section {padding:30px 20px; max-width:1000px; margin:auto;}
@@ -18,16 +19,17 @@
         .card {background:white; padding:20px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
         iframe {width:100%; height:300px; border:none; border-radius:10px;}
         footer {background:#1e1e2f; color:white; text-align:center; padding:20px; margin-top:20px;}
-        /* Timer */
         #timer-display {font-size:2rem; text-align:center; margin:20px 0;}
         button {padding:10px 20px; margin:5px; border:none; background:#1e1e2f; color:white; border-radius:5px; cursor:pointer;}
         button:hover {background:#555;}
+        input, textarea {width:100%; padding:10px; margin:5px 0 15px; border:1px solid #ccc; border-radius:5px;}
         @media(max-width:768px){.grid{grid-template-columns:1fr;}}
     </style>
 </head>
 <body>
 
 <header>
+    <img src="https://www.psusd.us/cms/lib/CA02204874/Centricity/Template/GlobalAssets/images///logos/dhshslogo.png" alt="Eagle Mascot">
     <h1>Dance Team Hub</h1>
     <p>Your central place for training, resources, and announcements</p>
 </header>
@@ -36,6 +38,7 @@
     <a href="#home">Home</a>
     <a href="#schedule">Schedule</a>
     <a href="#music">Music & Drills</a>
+    <a href="#members-only">Members</a>
     <a href="#gallery">Gallery</a>
     <a href="#news">News</a>
     <a href="#contact">Contact</a>
@@ -49,14 +52,12 @@
         <li>Competition registration closes Friday</li>
         <li>New drill videos added to resources</li>
     </ul>
-    <h3>Team Videos</h3>
-    <iframe src="https://www.youtube.com/embed/D_s4fjbC6a4" allowfullscreen></iframe>
 </section>
 
 <section id="schedule">
     <h2>Schedule</h2>
-    <p>Practice times & events synced via Google Calendar:</p>
-    <iframe src="https://calendar.google.com/calendar/embed?src=your_calendar_id&ctz=America/Los_Angeles" style="border:0" scrolling="no"></iframe>
+    <p>Practice times & events synced via School Calendar:</p>
+    <iframe src="https://www.psusd.us/Page/54#calendar27569/20250930/month" style="border:0" scrolling="no"></iframe>
 </section>
 
 <section id="music">
@@ -111,8 +112,6 @@
     </div>
 </section>
 
-
-    
 <section id="gallery">
     <h2>Gallery</h2>
     <div class="grid">
@@ -133,7 +132,8 @@
 </section>
 
 <section id="contact">
-    <h2>Contact</h2>
+    <h2>Contact & Directions</h2>
+    <p>School Address: 65850 Pierson Blvd, Desert Hot Springs, CA 92240</p>
     <form>
         <label>Name:</label><br>
         <input type="text" name="name" required><br>
@@ -166,23 +166,22 @@
         }, 1000);
     }
 
-function checkPassword() {
-    const passwordInput = document.getElementById('member-password').value;
-    const accessMessage = document.getElementById('access-message');
-    const content = document.getElementById('member-content');
+    // Members-only password function
+    function checkPassword() {
+        const passwordInput = document.getElementById('member-password').value;
+        const accessMessage = document.getElementById('access-message');
+        const content = document.getElementById('member-content');
 
-    const correctPassword = "dance2025"; // Change to your chosen password
+        const correctPassword = "dance2025"; // Change this to your chosen password
 
-    if(passwordInput === correctPassword) {
-        accessMessage.textContent = "";
-        content.style.display = "block";
-        document.getElementById('member-access').style.display = "none";
-    } else {
-        accessMessage.textContent = "Incorrect password. Try again.";
+        if(passwordInput === correctPassword) {
+            accessMessage.textContent = "";
+            content.style.display = "block";
+            document.getElementById('member-access').style.display = "none";
+        } else {
+            accessMessage.textContent = "Incorrect password. Try again.";
+        }
     }
-}
-
-    
 </script>
 
 </body>
