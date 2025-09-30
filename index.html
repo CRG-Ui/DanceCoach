@@ -93,6 +93,26 @@
     </div>
 </section>
 
+<section id="members-only">
+    <h2>Members-Only Resources</h2>
+    <div id="member-access">
+        <p>Enter password to access drills and private materials:</p>
+        <input type="password" id="member-password" placeholder="Password">
+        <button onclick="checkPassword()">Enter</button>
+        <p id="access-message" style="color:red;"></p>
+    </div>
+    <div id="member-content" style="display:none;">
+        <h3>Private Drills & Skills</h3>
+        <ul>
+            <li><a href="#">Advanced Drill Video 1</a></li>
+            <li><a href="#">Choreography Notes PDF</a></li>
+            <li><a href="#">Formation Screenshots Folder</a></li>
+        </ul>
+    </div>
+</section>
+
+
+    
 <section id="gallery">
     <h2>Gallery</h2>
     <div class="grid">
@@ -145,6 +165,24 @@
             if (--time < 0) clearInterval(timer);
         }, 1000);
     }
+
+function checkPassword() {
+    const passwordInput = document.getElementById('member-password').value;
+    const accessMessage = document.getElementById('access-message');
+    const content = document.getElementById('member-content');
+
+    const correctPassword = "dance2025"; // Change to your chosen password
+
+    if(passwordInput === correctPassword) {
+        accessMessage.textContent = "";
+        content.style.display = "block";
+        document.getElementById('member-access').style.display = "none";
+    } else {
+        accessMessage.textContent = "Incorrect password. Try again.";
+    }
+}
+
+    
 </script>
 
 </body>
