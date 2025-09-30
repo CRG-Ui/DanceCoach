@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dance Team Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {font-family: 'Roboto', sans-serif; margin:0; padding:0; line-height:1.6; background:#f5f5f5;}
+        header {background:#1e1e2f; color:white; padding:20px 0; text-align:center;}
+        header h1 {margin:0;}
+        nav {background:#333; display:flex; justify-content:center;}
+        nav a {color:white; padding:15px 20px; text-decoration:none;}
+        nav a:hover {background:#555;}
+        section {padding:30px 20px; max-width:1000px; margin:auto;}
+        h2 {color:#1e1e2f;}
+        .grid {display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+        .card {background:white; padding:20px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+        iframe {width:100%; height:300px; border:none; border-radius:10px;}
+        footer {background:#1e1e2f; color:white; text-align:center; padding:20px; margin-top:20px;}
+        /* Timer */
+        #timer-display {font-size:2rem; text-align:center; margin:20px 0;}
+        button {padding:10px 20px; margin:5px; border:none; background:#1e1e2f; color:white; border-radius:5px; cursor:pointer;}
+        button:hover {background:#555;}
+        @media(max-width:768px){.grid{grid-template-columns:1fr;}}
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dance Team Hub</h1>
+    <p>Your central place for training, resources, and announcements</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#music">Music & Drills</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="home">
+    <h2>Welcome</h2>
+    <p>Announcements & Updates:</p>
+    <ul>
+        <li>Next practice: Monday 5pm</li>
+        <li>Competition registration closes Friday</li>
+        <li>New drill videos added to resources</li>
+    </ul>
+    <h3>Team Videos</h3>
+    <iframe src="https://www.youtube.com/embed/D_s4fjbC6a4" allowfullscreen></iframe>
+</section>
+
+<section id="schedule">
+    <h2>Schedule</h2>
+    <p>Practice times & events synced via Google Calendar:</p>
+    <iframe src="https://calendar.google.com/calendar/embed?src=your_calendar_id&ctz=America/Los_Angeles" style="border:0" scrolling="no"></iframe>
+</section>
+
+<section id="music">
+    <h2>Music & Drills</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Warmups</h3>
+            <p>Follow along with these routines before practice.</p>
+            <button onclick="startTimer(300)">Start 5-min Warmup Timer</button>
+            <div id="timer-display">05:00</div>
+        </div>
+        <div class="card">
+            <h3>Drills & Skills</h3>
+            <ul>
+                <li><a href="#">Hip-hop footwork video</a></li>
+                <li><a href="#">Turns & spins tutorial</a></li>
+                <li><a href="#">Flexibility exercises</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Music Tracks</h3>
+            <ul>
+                <li><a href="#">Track 1</a></li>
+                <li><a href="#">Track 2</a></li>
+                <li><a href="#">Track 3</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Formation Screenshots</h3>
+            <p>Reference images for choreography formations.</p>
+            <img src="formation1.jpg" alt="Formation 1" style="width:100%; border-radius:10px;">
+            <img src="formation2.jpg" alt="Formation 2" style="width:100%; border-radius:10px; margin-top:10px;">
+        </div>
+    </div>
+</section>
+
+<section id="gallery">
+    <h2>Gallery</h2>
+    <div class="grid">
+        <img src="photo1.jpg" alt="Performance 1" style="width:100%; border-radius:10px;">
+        <img src="photo2.jpg" alt="Performance 2" style="width:100%; border-radius:10px;">
+        <img src="photo3.jpg" alt="Practice 1" style="width:100%; border-radius:10px;">
+        <img src="photo4.jpg" alt="Practice 2" style="width:100%; border-radius:10px;">
+    </div>
+</section>
+
+<section id="news">
+    <h2>News & Announcements</h2>
+    <ul>
+        <li>New choreography videos uploaded</li>
+        <li>Competition schedule released</li>
+        <li>Team fundraiser next week</li>
+    </ul>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <form>
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br>
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br>
+        <label>Message:</label><br>
+        <textarea name="message" rows="4" required></textarea><br>
+        <button type="submit">Send</button>
+    </form>
+</section>
+
+<footer>
+    <p>Dance Team &copy; 2025 | Sponsor inquiries: sponsor@email.com</p>
+</footer>
+
+<script>
+    // Timer function
+    let timer;
+    function startTimer(duration) {
+        clearInterval(timer);
+        let time = duration;
+        const display = document.getElementById('timer-display');
+        timer = setInterval(() => {
+            let minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+            display.textContent = 
+                (minutes < 10 ? '0' : '') + minutes + ':' +
+                (seconds < 10 ? '0' : '') + seconds;
+            if (--time < 0) clearInterval(timer);
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
